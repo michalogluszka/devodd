@@ -4,23 +4,40 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
+using DevOdd.UltimateDeatStar.Models;
+
 namespace DevOdd.UltimateDeatStar.Controllers
 {
     [Route("api/[controller]")]
     public class StormTroopersController : Controller
     {
+        private List<StormTrooper> _stormTroopers;
+
+        public StormTroopersController()
+        {
+            _stormTroopers = new List<StormTrooper>()
+            {
+                new StormTrooper { Id = 1 } ,
+                new StormTrooper { Id = 2 },
+                new StormTrooper { Id = 3 }
+            };
+        }
+
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            return new ObjectResult(_stormTroopers);
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            var trooper = _stormTroopers.FirstOrDefault(p => p.Id == id);
+            if (trooper == null)
+                return NotFound();
+            return new ObjectResult(trooper);
         }
 
         // POST api/values

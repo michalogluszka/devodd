@@ -5,36 +5,34 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 using DevOdd.UltimateDeatStar.Models;
+using DevOdd.UltimateDeatStar.Repositories;
 
 namespace DevOdd.UltimateDeatStar.Controllers
 {
     [Route("api/[controller]")]
     public class StormTroopersController : Controller
     {
-        private List<StormTrooper> _stormTroopers;
+        private IStormTroopersRepository _stormTroopersRepository;
 
-        public StormTroopersController()
+
+        public StormTroopersController(IStormTroopersRepository stormTroopersRepository)
         {
-            _stormTroopers = new List<StormTrooper>()
-            {
-                new StormTrooper { Id = 1 } ,
-                new StormTrooper { Id = 2 },
-                new StormTrooper { Id = 3 }
-            };
+            _stormTroopersRepository = stormTroopersRepository;        
         }
 
         // GET api/values
         [HttpGet]
         public IActionResult Get()
         {
-            return new ObjectResult(_stormTroopers);
+            IEnumerable<StormTrooper> stormTroopers = _stormTroopersRepository.GetAll();
+            return new ObjectResult(stormTroopers);
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var trooper = _stormTroopers.FirstOrDefault(p => p.Id == id);
+            StormTrooper trooper = _stormTroopersRepository.GetAll().FirstOrDefault(p => p.Id == id);
             if (trooper == null)
                 return NotFound();
             return new ObjectResult(trooper);

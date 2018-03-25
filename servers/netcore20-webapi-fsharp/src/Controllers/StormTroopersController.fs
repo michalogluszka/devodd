@@ -7,7 +7,7 @@ open System.Threading.Tasks
 open Microsoft.AspNetCore.Mvc
 
 [<Route("api/[controller]")>]
-type ValuesController () =
+type StormTroopersController () =
     inherit Controller()
 
     [<HttpGet>]

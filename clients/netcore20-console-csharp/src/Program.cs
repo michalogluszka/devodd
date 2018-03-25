@@ -13,7 +13,7 @@ namespace NetCore20
 
             Console.WriteLine("Storm Troopers available:");
 
-            using(StormTrooperService service = new StormTrooperService())
+            using(var service = new StormTroopersRepository())
             {
                 var stormTroopersTask = service.GetAllAsync(CancellationToken.None).GetAwaiter().GetResult();
 

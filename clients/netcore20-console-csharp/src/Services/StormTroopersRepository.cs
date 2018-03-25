@@ -8,11 +8,11 @@ using NetCore20.Models;
 
 namespace NetCore20.Services
 {
-    public class StormTrooperRepository : IDisposable
+    public class StormTroopersRepository : IDisposable
     {
         private HttpClient _httpClient;
 
-        public StormTrooperRepository()
+        public StormTroopersRepository()
         {
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = new Uri("http://localhost:5000/api/");

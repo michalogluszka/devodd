@@ -1,0 +1,4 @@
+open System
+
+type StormTroopersRepository () =
+    

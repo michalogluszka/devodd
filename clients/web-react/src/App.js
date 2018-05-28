@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import StormTrooper from './StormTrooper';
+import StormTrooperList from './StormTrooperList';
 
 import logo from './logo.svg';
 import './App.css';
@@ -13,8 +13,7 @@ export default class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">
-          <StormTrooper/>
-          <StormTrooper/>
+          <StormTrooperList/>
         </p>
       </div>
     );

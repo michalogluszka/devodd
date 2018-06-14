@@ -14,15 +14,15 @@ namespace src
 
     public class Authentication
     {
-        public static readonly string FetchTokenUri =
-            "https://westus.api.cognitive.microsoft.com/sts/v1.0";
         private string subscriptionKey;
+        private string fetchUri;
         private string token;
 
-        public Authentication(string subscriptionKey)
+        public Authentication(string subscriptionKey, string fetchUri)
         {
             this.subscriptionKey = subscriptionKey;
-            this.token = FetchTokenAsync(FetchTokenUri, subscriptionKey).Result;
+            this.fetchUri = fetchUri;
+            this.token = FetchTokenAsync(fetchUri, subscriptionKey).Result;
         }
 
         public string GetAccessToken()

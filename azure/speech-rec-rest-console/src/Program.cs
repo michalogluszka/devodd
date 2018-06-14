@@ -8,7 +8,22 @@ namespace src
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            string subscriptionKey = String.Empty;
+            string fetchUri = "https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1";
+
+            Console.WriteLine("Donna welcomes you!");
+
+            try
+            {
+                var auth = new Authentication(subscriptionKey,fetchUri);
+                Console.ReadKey();
+            }
+            catch(Exception ex)
+            {
+                System.Console.WriteLine("Exception!");
+                System.Console.WriteLine(ex.Message);
+                System.Console.WriteLine(ex.Source);
+            }
         }
     }
 

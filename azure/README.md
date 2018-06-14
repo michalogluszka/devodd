@@ -1,0 +1,1 @@
+# IT Seems that Microsoft.Bing.Speech is very old
